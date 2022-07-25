@@ -1,0 +1,24 @@
+
+*{
+	font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+table , td, th {
+	border: 1px solid #595959;
+	border-collapse: collapse;
+	margin-top: 1em;
+}
+td, th {
+	padding: 3px;
+	width: 36%;
+	height: 25px;
+}
+th {
+	background: #ccf0e8;
+}
+.even {
+	background: #ccf0e8;
+}
+.odd {
+	background: #ccf0e8;
+}

@@ -3,17 +3,22 @@
     {
       "id": 1,
       "name": "Naruto Uzumaki",
-      "level": "Hokague"
+      "level": "Hokage"
     },
     {
       "id": 2,
       "name": "Sasuke Uchiha",
-      "level": "Hokague"
+      "level": "Hokage"
     },
     {
+      "id": 3,
       "name": "Sakura Uchiha",
-      "level": "Jounin",
-      "id": 3
+      "level": "Jounin"
+    },
+    {
+      "id": 4,
+      "level": "Co-Hokague",
+      "name": "Shikamaru nara"
     }
   ]
 }
