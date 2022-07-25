@@ -15,6 +15,8 @@ const inputName = document.createElement('input')
 const inputLevel = document.createElement('input')
 const buttonSend = document.createElement('button')
 
+const buttonCancel = document.createElement('button')
+
 const table = document.createElement('table') // Contenedores principales
 const tbody = document.createElement('tbody') // Contenedores principales
 
@@ -31,11 +33,12 @@ h1.innerHTML = "CRUD About characters of Naruto Shippuden"
 inputName.placeholder = "Put a name of character"
 inputLevel.placeholder = "Put a level of character"
 buttonSend.innerHTML = "Send"
+buttonCancel.innerHTML = "Cancel update"
+buttonCancel.style.display = 'none'
 
 thName.innerHTML = 'Name'
 thLevel.innerHTML = 'Level'
 thActions.innerHTML = 'Actions'
-
 
 tr.append(thName,thLevel,thActions)
 tbody.append(tr)
@@ -43,6 +46,15 @@ tbody.append(tr)
 table.append(tbody)
 
 /* + ----------------------- + Events Listeners + ----------------------- + */
+
+buttonCancel.addEventListener('click', ()=>{
+
+    buttonSend.innerHTML = 'Send'
+    inputName.value = ''
+    inputLevel.value = ''
+    buttonCancel.style.display = 'none'
+
+})
 
 buttonSend.addEventListener('click', async() => {
 
@@ -80,6 +92,7 @@ const updateTable = async () =>{
             inputName.value = dataFind.name
             inputLevel.value = dataFind.level
 
+            buttonCancel.style.display = 'inline'
             buttonSend.innerHTML = 'Update'
         
         })
@@ -116,5 +129,5 @@ const updateTable = async () =>{
 
 export const launchViews = () =>{
     updateTable()
-    root.append(h1,inputName,inputLevel,buttonSend,table)
+    root.append(h1,inputName,inputLevel,buttonSend,buttonCancel,table)
 }
