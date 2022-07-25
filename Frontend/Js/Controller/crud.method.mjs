@@ -7,8 +7,8 @@ export const methodBody = (method, charName, charLevel) =>{
             'Content-Type': 'application/json'
         },
         body: JSON.stringify({
-            name: charName,
-            level: charLevel
+            name: charName || '',
+            level: charLevel || ''
         })
 
     }

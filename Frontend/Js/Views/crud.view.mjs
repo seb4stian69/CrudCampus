@@ -1,6 +1,6 @@
 /* + ----------------------- + Imports + ----------------------- + */
 
-import {getFunction} from '../Controller/crud.data.mjs'
+import {getFunction,postFunction, putFunction,deleteFunction, getFunctionById} from '../Controller/crud.data.mjs'
 import {url} from '../../../config.js'
 
 /* + ----------------------- + Container global + ----------------------- + */
@@ -9,8 +9,13 @@ const root = document.getElementById('root')
 
 /* + ----------------------- + Elementos HTML + ----------------------- + */
 
+const h1 = document.createElement('h1')
+
+const inputName = document.createElement('input')
+const inputLevel = document.createElement('input')
+const buttonSend = document.createElement('button')
+
 const table = document.createElement('table') // Contenedores principales
-const caption = document.createElement('caption') // Contenedores principales
 const tbody = document.createElement('tbody') // Contenedores principales
 
 const tr = document.createElement('tr') // Cabecera de la tabla
@@ -21,17 +26,31 @@ const thActions = document.createElement('th') // Cabecera de la tabla
 
 /* + ----------------------- + Añadiendo texto a los elementos HTML + ----------------------- + */
 
-caption.innerHTML ='Table of characters of naruto shipudden'
+h1.innerHTML = "CRUD About characters of Naruto Shippuden"
+
+inputName.placeholder = "Put a name of character"
+inputLevel.placeholder = "Put a level of character"
+buttonSend.innerHTML = "Send"
+
 thName.innerHTML = 'Name'
 thLevel.innerHTML = 'Level'
 thActions.innerHTML = 'Actions'
 
-table.append(caption)
 
 tr.append(thName,thLevel,thActions)
 tbody.append(tr)
 
 table.append(tbody)
+
+/* + ----------------------- + Events Listeners + ----------------------- + */
+
+buttonSend.addEventListener('click', async() => {
+
+    (buttonSend.innerHTML === 'Send') ? 
+        await postFunction(url, inputName.value, inputLevel.value) : 
+        await putFunction(url, sessionStorage.getItem('id') ,inputName.value, inputLevel.value)
+
+})
 
 /* + ----------------------- + Funciones internas del crud + ----------------------- + */
 
@@ -54,13 +73,22 @@ const updateTable = async () =>{
 
         btnUpdate.addEventListener('click', async ()=>{
 
-            alert(`Hola mundo: ${btnUpdate.value}`)
+            sessionStorage.setItem('id', btnDelete.value )
+
+            let dataFind = await getFunctionById(url,btnUpdate.value)
+
+            inputName.value = dataFind.name
+            inputLevel.value = dataFind.level
+
+            buttonSend.innerHTML = 'Update'
         
         })
 
         btnDelete.addEventListener('click', async ()=>{
 
-            alert(`Chao mundo: ${btnDelete.value}`)
+            let dataFind = await getFunctionById(url,btnUpdate.value)
+
+            if (confirm("Are you sure to delete it?")) { await deleteFunction(url, dataFind.id) }
         
         })
 
@@ -86,7 +114,7 @@ const updateTable = async () =>{
 
 /* + ----------------------- + Main launch + ----------------------- + */
 
-export const seeTable = () =>{
+export const launchViews = () =>{
     updateTable()
-    root.append(table)
+    root.append(h1,inputName,inputLevel,buttonSend,table)
 }

@@ -1,24 +1,19 @@
 {
   "characters": [
     {
-      "id": 1,
       "name": "Naruto Uzumaki",
-      "level": "Hokage"
+      "level": "Hokage",
+      "id": 1
     },
     {
-      "id": 2,
       "name": "Sasuke Uchiha",
-      "level": "Hokage"
+      "level": "Hokage",
+      "id": 2
     },
     {
-      "id": 3,
       "name": "Sakura Uchiha",
-      "level": "Jounin"
-    },
-    {
-      "id": 4,
-      "level": "Co-Hokague",
-      "name": "Shikamaru nara"
+      "level": "Jounin",
+      "id": 3
     }
   ]
 }
