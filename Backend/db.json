@@ -1,0 +1,19 @@
+{
+  "characters": [
+    {
+      "id": 1,
+      "name": "Naruto Uzumaki",
+      "level": "Hokague"
+    },
+    {
+      "id": 2,
+      "name": "Sasuke Uchiha",
+      "level": "Hokague"
+    },
+    {
+      "name": "Sakura Uchiha",
+      "level": "Jounin",
+      "id": 3
+    }
+  ]
+}
