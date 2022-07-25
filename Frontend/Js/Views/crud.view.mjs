@@ -58,9 +58,20 @@ buttonCancel.addEventListener('click', ()=>{
 
 buttonSend.addEventListener('click', async() => {
 
-    (buttonSend.innerHTML === 'Send') ? 
-        await postFunction(url, inputName.value, inputLevel.value) : 
-        await putFunction(url, sessionStorage.getItem('id') ,inputName.value, inputLevel.value)
+    if(inputName.value.trim() === '' && inputLevel.value.trim() === ''){
+
+        alert("Rellena los campos con valores")
+        inputName.value = ''
+        inputLevel.value = ''
+        inputName.focus()
+
+    } else {
+
+        (buttonSend.innerHTML === 'Send') ? 
+            await postFunction(url, inputName.value, inputLevel.value) : 
+            await putFunction(url, sessionStorage.getItem('id') ,inputName.value, inputLevel.value)
+
+    }
 
 })
 
